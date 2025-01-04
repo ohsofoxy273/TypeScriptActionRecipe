@@ -25683,6 +25683,20 @@ async function run() {
         core.debug(new Date().toTimeString());
         // Set outputs for other workflow steps to use
         core.setOutput('time', new Date().toTimeString());
+        core.summary
+            .addHeading('Advanced job summary', 'h2')
+            .addImage('https://octodex.github.com/images/droidtocat.png', 'DroidToCat', { width: '64', height: '64' })
+            .addTable([
+            [
+                { data: 'File', header: true },
+                { data: 'Result', header: true }
+            ],
+            ['foo.js', 'Pass ✅'],
+            ['bar.js', 'Fail ❌'],
+            ['test.js', 'Pass ✅']
+        ])
+            .addLink('My custom link', 'https://writeabout.net')
+            .write();
     }
     catch (error) {
         // Fail the workflow run if an error occurs
